@@ -3,7 +3,8 @@ import { ChevronLeft, Star, Trash2, Tag, CalendarDays } from 'lucide-react'
 import { useJournal, MOODS } from '../store.jsx'
 
 export default function Editor({ entry, onClose }) {
-  const { dispatch, settings } = useJournal()
+  const { dispatch, settings, entries } = useJournal()
+  const liveEntry = entries.find((e) => e.id === entry?.id) || entry
   const [date, setDate] = useState(entry?.date || new Date().toISOString().slice(0, 10))
   const [title, setTitle] = useState(entry?.title || '')
   const [body, setBody] = useState(entry?.body || '')
