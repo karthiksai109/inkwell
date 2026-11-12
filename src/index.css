@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+.dark {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-paper-100 text-ink-900 font-sans antialiased;
+}
+.dark body {
+  @apply bg-ink-900 text-paper-100;
+}
+
+/* subtle paper grain */
+.paper-grain {
+  background-image: radial-gradient(#00000008 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+.dark .paper-grain {
+  background-image: radial-gradient(#ffffff09 1px, transparent 1px);
+}
+
+/* safe areas for notched phones */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+/* hide scrollbars on horizontal chip rows */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+textarea, input {
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
